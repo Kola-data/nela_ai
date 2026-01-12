@@ -1,0 +1,62 @@
+# Nela AI - Multi-Tenant AI Agent
+# Created in 2026 by Bytelink Technologies
+# Requirements for the backend server
+
+# Core FastAPI and web server
+fastapi==0.127.0
+uvicorn==0.40.0
+starlette==0.50.0
+pydantic==2.12.5
+pydantic_core==2.41.5
+
+# Database
+SQLAlchemy==2.0.45
+asyncpg==0.31.0
+greenlet==3.3.0
+
+# Authentication & Security
+bcrypt==5.0.0
+python-dotenv==1.2.1
+email-validator==2.3.0
+
+# HTTP Client
+requests==2.31.0
+h11==0.16.0
+anyio==4.12.0
+
+# Vector Database & Embeddings
+chromadb==0.5.11
+faiss-cpu==1.13.2
+
+# Document Processing
+PyPDF2==3.0.1
+
+# Search & Ranking
+rank-bm25==0.2.2
+scikit-learn==1.5.1
+
+# Caching
+redis==5.2.0
+
+# Scientific Computing
+numpy==1.26.4
+scipy==1.14.0
+joblib==1.4.2
+
+# Type checking and validation
+annotated-types==0.7.0
+annotated-doc==0.0.4
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+
+# Utilities
+click==8.3.1
+dnspython==2.8.0
+packaging==24.1
+idna==3.11
+
+# Note: Ollama is required but installed separately
+# Install Ollama from: https://ollama.ai
+# Required models:
+#   - llama3.2 (for LLM)
+#   - mxbai-embed-large:335m (for embeddings)
