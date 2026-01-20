@@ -21,19 +21,20 @@ uvicorn==0.40.0
 # LangChain Integration - REMOVED (too much dependency bloat with Python 3.13)
 # Using direct Ollama API calls and ChromaDB instead
 packaging==24.1
-# Direct dependencies for Ollama + ChromaDB
-chromadb==0.5.11
+# Direct dependencies for Ollama + PostgreSQL + pgvector
+# chromadb==0.5.11  # REMOVED - replaced with pgvector
 requests==2.31.0
 PyPDF2==3.0.1
-# CPU-Optimized RAG Stack (2025 Lightweight)
+# PostgreSQL + pgvector for production RAG
+pgvector==0.3.2
+# CPU-Optimized RAG Stack (2025 Production-Ready)
 # No GPU/CUDA - Pure CPU performance
 redis==5.2.0
-rank-bm25==0.2.2
+rank-bm25==0.2.2  # Optional: for additional keyword search
 # CPU-friendly embeddings (using just transformers, not sentence-transformers which requires torch)
-# sentence-transformers==3.0.0  # REMOVED - requires PyTorch!
-# transformers==4.42.4  # REMOVED - chromadb will handle this
-# CPU-only vector operations (latest stable version)
-faiss-cpu==1.13.2
+# sentence-transformers==3.0.0  # Optional: for cross-encoder re-ranking
+# transformers==4.42.4  # REMOVED - using Ollama for embeddings
+# faiss-cpu==1.13.2  # REMOVED - using pgvector HNSW instead
 # Efficient CPU computation (latest stable versions)
 numpy==1.26.4
 scipy==1.14.0

@@ -55,12 +55,22 @@ export const authAPI = {
 
 // Document API
 export const documentAPI = {
-  upload: async (file) => {
+  upload: async (file, onUploadProgress) => {
     const formData = new FormData();
     formData.append('file', file);
     const response = await api.post('/ai/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
+      },
+      onUploadProgress: (progressEvent) => {
+        if (onUploadProgress && progressEvent.total) {
+          const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+          onUploadProgress({
+            loaded: progressEvent.loaded,
+            total: progressEvent.total,
+            percent: percentCompleted,
+          });
+        }
       },
     });
     return response.data;

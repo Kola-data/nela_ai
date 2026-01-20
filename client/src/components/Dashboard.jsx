@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { authAPI } from '../services/api';
+import { useUploads } from '../contexts/UploadContext';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import UploadProgress from './UploadProgress';
 import DocumentUpload from './DocumentUpload';
 import AIQuery from './AIQuery';
 import FileList from './FileList';
@@ -12,6 +14,7 @@ function Dashboard({ setIsAuthenticated }) {
   const [user, setUser] = useState(null);
   const [activeTab, setActiveTab] = useState('query');
   const [loading, setLoading] = useState(true);
+  const { uploads } = useUploads();
 
   useEffect(() => {
     loadUser();
@@ -46,6 +49,7 @@ function Dashboard({ setIsAuthenticated }) {
   return (
     <div className="dashboard">
       <Navbar user={user} onLogout={handleLogout} />
+      <UploadProgress uploads={uploads} />
       <div className="dashboard-container">
         <div className="dashboard-sidebar">
           <nav className="sidebar-nav">
